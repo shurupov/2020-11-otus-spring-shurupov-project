@@ -1,0 +1,2 @@
+insert into c_purchase (name, description, created_at) VALUES ('Закупка 1', 'авыаыв аыв аыв аывэ', now());
+insert into c_purchase (name, description, created_at) VALUES ('Закупка 2', 'аваываываы', now());
