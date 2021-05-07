@@ -9,31 +9,31 @@ import javax.persistence.AttributeConverter;
 import java.io.IOException;
 import java.util.Map;
 
-public class HashMapConverter implements AttributeConverter<Map<String, Object>, String> {
+public class MapConverter implements AttributeConverter<Map<String, Object>, String> {
 
-    private static final Logger logger = LoggerFactory.getLogger(HashMapConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(MapConverter.class);
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String convertToDatabaseColumn(Map<String, Object> customerInfo) {
+    public String convertToDatabaseColumn(Map<String, Object> attribute) {
 
-        String customerInfoJson = null;
+        String dbData = null;
         try {
-            customerInfoJson = objectMapper.writeValueAsString(customerInfo);
+            dbData = objectMapper.writeValueAsString(attribute);
         } catch (final JsonProcessingException e) {
             logger.error("JSON writing error", e);
         }
 
-        return customerInfoJson;
+        return dbData;
     }
 
     @Override
-    public Map<String, Object> convertToEntityAttribute(String customerInfoJSON) {
+    public Map<String, Object> convertToEntityAttribute(String dbData) {
 
         Map<String, Object> customerInfo = null;
         try {
-            customerInfo = objectMapper.readValue(customerInfoJSON, Map.class);
+            customerInfo = objectMapper.readValue(dbData, Map.class);
         } catch (final IOException e) {
             logger.error("JSON reading error", e);
         }

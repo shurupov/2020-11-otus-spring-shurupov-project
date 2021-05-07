@@ -1,10 +1,12 @@
 package ru.otus.shurupov.jointpurchase.domain;
 
 import lombok.Data;
-import ru.otus.shurupov.jointpurchase.converter.HashMapConverter;
+import ru.otus.shurupov.jointpurchase.converter.ListConverter;
+import ru.otus.shurupov.jointpurchase.converter.MapConverter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -17,6 +19,10 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
+    @ManyToOne(targetEntity = Purchase.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "purchase_id")
+    private Purchase purchase;
+
     @Column(name = "name")
     private String name;
 
@@ -24,18 +30,18 @@ public class Product {
     private String description;
 
     @SuppressWarnings("JpaAttributeTypeInspection")
-    @Convert(converter = HashMapConverter.class)
+    @Convert(converter = MapConverter.class)
     @Column(name = "properties")
     private Map<String, Object> properties;
 
     @Column(name = "option_name")
     private String optionName;
 
-    /*@Type(type = "jsonb")
-    @Column(columnDefinition = "jsonb")
-    private List<String> options;*/
+    @Column(name = "options")
+    @Convert(converter = ListConverter.class)
+    private List<String> options;
 
-    @Column(name = "name")
+    @Column(name = "price")
     private Integer price;
 
     @Column(name = "created_at")

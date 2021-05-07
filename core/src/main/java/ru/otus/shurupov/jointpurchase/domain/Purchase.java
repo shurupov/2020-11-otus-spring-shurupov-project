@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,6 +15,9 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @OneToMany(targetEntity = Product.class, fetch = FetchType.LAZY, mappedBy = "purchase")
+    private List<Product> products;
 
     @Column(name = "name")
     private String name;

@@ -16,6 +16,11 @@ spring:
       hibernate:
         format_sql: true
 
+  data:
+    rest:
+      base-path: /api
+#      default-media-type: application/json
+
 liquibase:
   enabled: true
   driver-class-name: org.postgresql.Driver
