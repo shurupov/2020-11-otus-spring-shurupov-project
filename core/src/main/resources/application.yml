@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jpurchase
+    username: springuser
+    password: springpassword
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: never
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    rest:
+      base-path: /api
+#      default-media-type: application/json
+
+liquibase:
+  enabled: true
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/jpurchase
+  user: springuser
+  password: springpassword
