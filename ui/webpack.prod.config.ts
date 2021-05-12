@@ -29,6 +29,18 @@ const config: webpack.Configuration = {
                     },
                 },
             },
+            {
+                // For pure CSS - /\.css$/i,
+                // For Sass/SCSS - /\.((c|sa|sc)ss)$/i,
+                // For Less - /\.((c|le)ss)$/i,
+                test: /\.((c|sa|sc)ss)$/i,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                    },
+                ],
+            },
         ],
     },
     resolve: {
