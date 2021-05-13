@@ -11,7 +11,7 @@ const config: webpack.Configuration = {
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "[name].[contenthash].js",
-        publicPath: "",
+        publicPath: "/",
     },
     module: {
         rules: [
@@ -40,6 +40,11 @@ const config: webpack.Configuration = {
                         loader: "css-loader",
                     },
                 ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+                // More information here https://webpack.js.org/guides/asset-modules/
+                type: "asset",
             },
         ],
     },

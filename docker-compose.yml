@@ -33,7 +33,7 @@ services:
     container_name: jpurchase-ui
     image: jpurchase-ui:v1
     depends_on:
-      - backend
+      - core
     ports:
       - 80:80
     networks:
