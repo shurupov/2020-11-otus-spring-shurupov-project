@@ -1,8 +1,7 @@
-
 import React from "react";
 
-import { Layout, Menu, Breadcrumb } from 'antd';
-const { Header, Content, Sider } = Layout;
+import { Layout, Menu } from 'antd';
+const { Header } = Layout;
 
 export const TopMenu = () => (
     <Header className="header">

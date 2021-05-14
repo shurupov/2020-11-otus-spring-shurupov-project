@@ -1,16 +1,17 @@
 import {Menu} from "antd";
 import {FormOutlined, UserOutlined} from "@ant-design/icons";
 import React from "react";
+import {Link} from "react-router-dom";
 
 export const LeftMenu = () => (
     <Menu
         mode="inline"
-        defaultSelectedKeys={['2']}
+        defaultSelectedKeys={['profile']}
         defaultOpenKeys={[]}
         style={{ height: '100%', borderRight: 0 }}
     >
-        <Menu.Item key="1" icon={<UserOutlined />}>Профиль</Menu.Item>
-        <Menu.Item key="2" icon={<FormOutlined />}><a href={"/orders"}>Заказы</a></Menu.Item>
-        <Menu.Item key="3" icon={<UserOutlined />} isSelected><a href={"/my-purchases"}>Мои закупки</a></Menu.Item>
+        <Menu.Item key="profile" icon={<UserOutlined />}><Link to={"/profile"}>Профиль</Link></Menu.Item>
+        <Menu.Item key="orders" icon={<FormOutlined />}><Link to={"/orders"}>Заказы</Link></Menu.Item>
+        <Menu.Item key="my-purchases" icon={<UserOutlined />}><Link to={"/my-purchases"}>Мои закупки</Link></Menu.Item>
     </Menu>
 );
