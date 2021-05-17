@@ -1,8 +1,4 @@
 FROM openjdk:11-jre-slim
-ENV PROJECT_DIR=/opt/project
-VOLUME ./ $PROJECT_DIR
-RUN mkdir -p $PROJECT_DIR
-WORKDIR $PROJECT_DIR
-COPY --from=0 $PROJECT_DIR/target/jpurchase-core-1.0.jar $PROJECT_DIR/
+WORKDIR /opt/project
 EXPOSE 8080
 CMD ["java", "-jar", "/opt/project/jpurchase-core-1.0.jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"]

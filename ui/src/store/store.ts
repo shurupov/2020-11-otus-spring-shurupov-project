@@ -5,6 +5,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {createRootReducer} from "./reducer";
 import { routerMiddleware } from "connected-react-router";
 import {watchLocationChange} from "../components/routing/saga";
+import {watchPurchasesList} from "../components/purchasesList/saga";
 
 export const history = createBrowserHistory();
 
@@ -30,3 +31,4 @@ export default function configureStore(preloadedState: PreloadedState<any>) {
 export const store: Store = configureStore({});
 
 sagaMiddleware.run(watchLocationChange);
+sagaMiddleware.run(watchPurchasesList);

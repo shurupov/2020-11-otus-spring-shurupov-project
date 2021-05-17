@@ -15,7 +15,7 @@ services:
       context: ./core
       dockerfile: ./DevDockerfile
     container_name: jpurchase-core-dev
-    image: jpurchase-core:v2
+    image: jpurchase-core:dev
     depends_on:
       - postgresdb
     ports:
@@ -23,25 +23,42 @@ services:
       - 5005:5005
     networks:
       - backend
-#      - frontend
+      - frontend
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/jpurchase
       SPRING_DATASOURCE_USERNAME: jpurchaseuser1
       SPRING_DATASOURCE_PASSWORD: jpurchasepassword1
+    volumes:
+      - "./core/target:/opt/project"
 
 #  frontend:
 #    build:
-#      context: ./frontend
-#    container_name: 35-hystrix-frontend
-#    image: 35-hystrix-frontend:v2
+#      context: ./ui
+#      dockerfile: ./DevDockerfile
+#    container_name: jpurchase-ui-dev
+#    image: jpurchase-ui:dev
 #    depends_on:
-#      - backend
+#      - core
+#    ports:
+#      - 4000:4000
+#    networks:
+#      - frontend
+#    volumes:
+#      - "./ui:/opt/project"
+
+#  nginx-router:
+#    container_name: nginx-router
+#    image: nginx:1.17.1-alpine
+#    depends_on:
+#      - frontend
 #    ports:
 #      - 80:80
 #    networks:
 #      - frontend
+#    volumes:
+#      - ./ui/default.conf:/etc/nginx/conf.d/
 
 
 networks:
-#  frontend:
+  frontend:
   backend:

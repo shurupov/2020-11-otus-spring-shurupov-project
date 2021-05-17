@@ -64,6 +64,12 @@ const config: Configuration = {
         new ESLintPlugin({
             extensions: ["js", "jsx", "ts", "tsx"],
         }),
+        new webpack.DefinePlugin({
+            SERVICE_URL: JSON.stringify("http://localhost:8080"),
+            "process.env": {
+                "service": JSON.stringify("http://localhost:8080")
+            }
+        }),
     ],
     devtool: "inline-source-map",
     devServer: {

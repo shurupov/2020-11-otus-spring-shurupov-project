@@ -1,16 +1,19 @@
 import {put, takeEvery, select} from "redux-saga/effects";
 import {sagaActionTypes} from "../../store/sagaActionTypes";
+import {purchasesListAction} from "../purchasesList/saga";
 
 export const pathSelector = (state: any) => state.router.location.pathname;
-export const locationSelector = (state: any) => state.router.location;
 
 export function* workerLocationChange(): any {
     const url = yield select(pathSelector);
     console.log(url);
-    const location = yield select(locationSelector);
-    console.log(location);
+    if (url == "/purchases") {
+        console.log("purchases condition branch")
+        yield put(purchasesListAction());
+    }
 }
 
 export function* watchLocationChange() {
     yield takeEvery(sagaActionTypes.LOCATION_CHANGE, workerLocationChange);
 }
+

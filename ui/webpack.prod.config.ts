@@ -62,6 +62,12 @@ const config: webpack.Configuration = {
             extensions: ["js", "jsx", "ts", "tsx"],
         }),
         new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            SERVICE_URL: JSON.stringify(""),
+            "process.env": {
+                "service": JSON.stringify("")
+            }
+        }),
     ],
 };
 
