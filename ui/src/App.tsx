@@ -2,12 +2,12 @@ import 'antd/dist/antd.css';
 import React from "react";
 import { Layout } from 'antd';
 import {TopMenu} from "./components/topMenu/TopMenu";
-import {LeftMenu} from "./components/leftMenu/LeftMenu";
 import {Breadcrumbs} from "./components/breadcrumbs/BreadCrumbs";
 import {Provider} from "react-redux";
 import {store, history} from "./store/store";
 import {ConnectedRouter} from "connected-react-router";
 import {CustomContent} from "./components/customContent/CustomContent";
+import {ConnectedLeftMenu} from "./components/leftMenu/ConnectedLeftMenu";
 
 const { Content, Sider } = Layout;
 
@@ -18,7 +18,7 @@ export const App = () => (
                 <TopMenu />
                 <Layout>
                     <Sider width={200} className="site-layout-background">
-                        <LeftMenu />
+                        <ConnectedLeftMenu />
                     </Sider>
                     <Layout style={{ padding: '0 24px 24px' }}>
                         <Breadcrumbs />

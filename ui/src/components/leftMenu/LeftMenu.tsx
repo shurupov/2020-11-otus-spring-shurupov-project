@@ -3,10 +3,14 @@ import {FormOutlined, UserOutlined} from "@ant-design/icons";
 import React from "react";
 import {Link} from "react-router-dom";
 
-export const LeftMenu = () => (
+interface LeftMenuProps {
+    selected: string;
+}
+
+export const LeftMenu = (props: LeftMenuProps) => (
     <Menu
         mode="inline"
-        defaultSelectedKeys={['profile']}
+        defaultSelectedKeys={[props.selected]}
         defaultOpenKeys={[]}
         style={{ height: '100%', borderRight: 0 }}
     >

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import {PurchasesList} from "../purchasesList/PurchasesList";
+import {ConnectedPurchasesList} from "../purchasesList/ConnectedPurchasesList";
 
 export const CustomContent = () => (
     <Switch>
@@ -8,7 +8,7 @@ export const CustomContent = () => (
             Index page
         </Route>
         <Route path="/purchases" exact>
-            <PurchasesList />
+            <ConnectedPurchasesList />
         </Route>
     </Switch>
 );
