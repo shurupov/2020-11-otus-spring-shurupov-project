@@ -1,3 +1,6 @@
+jwt:
+  secret: otusspringprojectsecret
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/jpurchase
