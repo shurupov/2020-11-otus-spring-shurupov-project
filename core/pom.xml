@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>ru.otus.shurupov.jointpurchase</groupId>
-	<artifactId>core</artifactId>
+	<artifactId>jpurchase-core</artifactId>
 	<version>1.0</version>
 	<name>core</name>
 	<description>Joint Purchase Core</description>

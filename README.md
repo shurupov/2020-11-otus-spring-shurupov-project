@@ -11,21 +11,26 @@ Project: Joint Purchase Service
 Description: Joint Purchase Organization Automation
 
 <details>
+  <summary>Start application in production mode</summary>
+
+## Command to init/start
+`docker-compose up`
+
+</details>
+
+<details>
   <summary>Start application in development mode</summary>
-  
-## Command to init postgres container image and start it (You need to have docker installed)
-`docker run -d --name jppostgres -p 5432:5432 -e POSTGRES_PASSWORD=springpassword -e POSTGRES_USER=springuser -e POSTGRES_DB=jpurchase postgres:13.2`
 
-## Command to stop postgres container
-`docker stop jppostgres`
+## Command to build backend (in `core` folder)
+`mvn clean package`
 
-## Command to start postgres (You need to have postgres container initialized)
-`docker start jppostgres`
+## Command to init/start database and backend (in root folder)
+`docker-compose --file docker-compose-dev.yml up`
 
-## Command to remove postgres container image
-`docker rm postgres`
+## Command to prepare frontend (in `ui` folder)
+`npm install`
 
-## Command to build the core backend application
-`mvn clean spring-boot:run`
+## Command to start frontend (in `ui` folder)
+`npm start`
   
 </details>

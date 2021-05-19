@@ -1,0 +1,64 @@
+version: "3"
+services:
+  postgresdb:
+    container_name: jpurchase-postgresdb
+    image: library/postgres:13.2
+    environment:
+      POSTGRES_USER: jpurchaseuser1
+      POSTGRES_PASSWORD: jpurchasepassword1
+      POSTGRES_DB: jpurchase
+    networks:
+      - backend
+
+  core:
+    build:
+      context: ./core
+      dockerfile: ./DevDockerfile
+    container_name: jpurchase-core-dev
+    image: jpurchase-core:dev
+    depends_on:
+      - postgresdb
+    ports:
+      - 8080:8080
+      - 5005:5005
+    networks:
+      - backend
+      - frontend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/jpurchase
+      SPRING_DATASOURCE_USERNAME: jpurchaseuser1
+      SPRING_DATASOURCE_PASSWORD: jpurchasepassword1
+    volumes:
+      - "./core/target:/opt/project"
+
+#  frontend:
+#    build:
+#      context: ./ui
+#      dockerfile: ./DevDockerfile
+#    container_name: jpurchase-ui-dev
+#    image: jpurchase-ui:dev
+#    depends_on:
+#      - core
+#    ports:
+#      - 4000:4000
+#    networks:
+#      - frontend
+#    volumes:
+#      - "./ui:/opt/project"
+
+#  nginx-router:
+#    container_name: nginx-router
+#    image: nginx:1.17.1-alpine
+#    depends_on:
+#      - frontend
+#    ports:
+#      - 80:80
+#    networks:
+#      - frontend
+#    volumes:
+#      - ./ui/default.conf:/etc/nginx/conf.d/
+
+
+networks:
+  frontend:
+  backend:
