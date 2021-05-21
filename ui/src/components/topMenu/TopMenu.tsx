@@ -1,12 +1,19 @@
 import React from "react";
 
 import { Layout, Menu } from 'antd';
+import {UserOutlined} from "@ant-design/icons";
+import {Link} from "react-router-dom";
 const { Header } = Layout;
 
-export const TopMenu = () => (
+interface TopMenuProps {
+    selected: string;
+}
+
+export const TopMenu = (props: TopMenuProps) => (
     <Header className="header">
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">Закупки</Menu.Item>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[props.selected]}>
+            <Menu.Item key="purchases"><Link to={"/purchases"}>Закупки</Link></Menu.Item>
+            <Menu.Item key="auth" icon={<UserOutlined />}><Link to={"/auth"}>Log In</Link></Menu.Item>
         </Menu>
     </Header>
 );

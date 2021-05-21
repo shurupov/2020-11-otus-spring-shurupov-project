@@ -6,6 +6,7 @@ import {createRootReducer} from "./reducer";
 import { routerMiddleware } from "connected-react-router";
 import {watchLocationChange} from "../components/routing/saga";
 import {watchPurchasesList} from "../components/purchasesList/saga";
+import {watchLogin} from "../components/authentication/saga";
 
 export const history = createBrowserHistory();
 
@@ -32,3 +33,4 @@ export const store: Store = configureStore({});
 
 sagaMiddleware.run(watchLocationChange);
 sagaMiddleware.run(watchPurchasesList);
+sagaMiddleware.run(watchLogin);

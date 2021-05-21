@@ -4,9 +4,7 @@ import {LeftMenu} from "./LeftMenu";
 const mapStateToProps = (storeState: any) => {
     let selected = "";
     const location: string = storeState.router.location.pathname;
-    if (location.substr(0, 10) == "/purchases") {
-        selected = "purchases";
-    } else if (location.substr(0, 8) == "/profile") {
+    if (location.substr(0, 8) == "/profile") {
         selected = "profile";
     } else if (location.substr(0, 7) == "/orders") {
         selected = "orders";
