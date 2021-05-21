@@ -5,7 +5,6 @@ import {history} from "../store/store";
 export function* extendedFetch(url: string, method = "GET", body: any = undefined, headers = {}): any {
     const requestSettings: RequestInit = {
         method,
-        mode: "no-cors",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
