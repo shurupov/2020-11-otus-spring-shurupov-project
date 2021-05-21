@@ -6,7 +6,6 @@ import {loginAction} from "./saga";
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         submit: (authRequest: AuthRequest) => {
-            console.log(authRequest);
             dispatch(loginAction(authRequest));
         }
     }

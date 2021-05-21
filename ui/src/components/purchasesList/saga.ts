@@ -1,7 +1,7 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import {sagaActionTypes} from "../../store/sagaActionTypes";
 import {purchasesListSlice} from "./slice";
-import {extendedFetch} from "../../utils/auth";
+import {authenticatedFetch} from "../../utils/auth";
 
 export const purchasesListAction = () => {
     return {
@@ -11,8 +11,7 @@ export const purchasesListAction = () => {
 
 export function* workerPurchasesList(): any {
     try {
-        const response = yield call(extendedFetch, "/api/purchases");
-        const purchases = yield call([response, 'json']);
+        const purchases = yield call(authenticatedFetch, "/api/purchases");
         yield put(purchasesListSlice.actions.list(purchases._embedded.purchases));
     } catch (e) {
         console.log(e);

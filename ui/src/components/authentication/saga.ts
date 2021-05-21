@@ -1,7 +1,7 @@
 import {AuthRequest} from "./Authetication";
 import {sagaActionTypes} from "../../store/sagaActionTypes";
 import {call, takeEvery} from "redux-saga/effects";
-import {extendedFetch} from "../../utils/auth";
+import {loginFetch} from "../../utils/auth";
 import {AnyAction} from "redux";
 
 export const loginAction = (authRequest: AuthRequest) => {
@@ -12,8 +12,15 @@ export const loginAction = (authRequest: AuthRequest) => {
 }
 
 export function* workerLogin(action:AnyAction): any {
-    const jwtResponse = yield call(extendedFetch, "/authenticate", "POST", action.payload);
-    console.log(jwtResponse);
+    try {
+        const jwtResponse = yield call(loginFetch, action.payload);
+        localStorage.setItem("jwttoken", jwtResponse.jwttoken);
+        console.log(jwtResponse.jwttoken);
+    } catch (e) {
+        if (e.name == "BadResponse" && e.response.status == 401) {
+            console.log("Ошибка аутентификации");
+        }
+    }
 }
 
 export function* watchLogin() {
