@@ -2,6 +2,7 @@ import {call, put, takeEvery} from "redux-saga/effects";
 import {sagaActionTypes} from "../../store/sagaActionTypes";
 import {purchasesListSlice} from "./slice";
 import {authenticatedFetch} from "../../utils/auth";
+import {history} from "../../store/store";
 
 export const purchasesListAction = () => {
     return {
@@ -15,7 +16,9 @@ export function* workerPurchasesList(): any {
         yield put(purchasesListSlice.actions.list(purchases._embedded.purchases));
     } catch (e) {
         console.log(e);
-        console.error("some error");
+        if (e.name == "BadResponse" && e.response.status == 401) {
+            history.push("/auth");
+        }
     }
 }
 

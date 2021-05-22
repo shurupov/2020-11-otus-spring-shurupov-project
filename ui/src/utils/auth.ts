@@ -28,15 +28,10 @@ export function* loginFetch(authRequest: AuthRequest): any {
 }
 
 export function* authenticatedFetch(url: string, method = "GET", body: any = undefined): any {
-
     const jwttoken = localStorage.getItem("jwttoken");
     if (jwttoken == null) {
         console.log("not authenticated");
         history.push("/auth");
-        throw {
-            name: "NotAuthenticated",
-            message: "You are not authenticated",
-        };
     }
 
     const authHeaders = {
@@ -44,4 +39,8 @@ export function* authenticatedFetch(url: string, method = "GET", body: any = und
     };
 
     return yield call(extendedFetch, url, method, body, authHeaders);
+}
+
+export const authenticated = (): boolean => {
+    return localStorage.getItem("jwttoken") != null;
 }
