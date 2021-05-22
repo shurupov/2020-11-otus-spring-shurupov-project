@@ -6,9 +6,7 @@ export const pathSelector = (state: any) => state.router.location.pathname;
 
 export function* workerLocationChange(): any {
     const url = yield select(pathSelector);
-    console.log(url);
     if (url == "/purchases") {
-        console.log("purchases condition branch")
         yield put(purchasesListAction());
     }
 }

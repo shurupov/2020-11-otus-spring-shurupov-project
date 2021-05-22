@@ -9,11 +9,11 @@ interface TopMenuProps {
     selected: string;
 }
 
-export const TopMenu = (props: TopMenuProps) => (
-    <Header className="header">
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[props.selected]}>
-            <Menu.Item key="purchases"><Link to={"/purchases"}>Закупки</Link></Menu.Item>
-            <Menu.Item key="auth" icon={<UserOutlined />}><Link to={"/auth"}>Log In</Link></Menu.Item>
+export const TopMenu = (props: TopMenuProps) => {
+    return <Header className="header">
+        <Menu theme="dark" mode="horizontal" selectedKeys={[props.selected]}>
+            <Menu.Item key="/purchases"><Link to={"/purchases"}>Закупки</Link></Menu.Item>
+            <Menu.Item key="/auth" icon={<UserOutlined/>}><Link to={"/auth"}>Log In</Link></Menu.Item>
         </Menu>
     </Header>
-);
+};

@@ -12,7 +12,6 @@ export function* extendedFetch(url: string, method = "GET", body: any = undefine
         },
         body: body ? JSON.stringify(body) : undefined,
     };
-    console.log(requestSettings);
     const response: Response = yield call(fetch, process.env.service + url, requestSettings);
     if (!response.ok) {
         throw {
@@ -31,7 +30,6 @@ export function* loginFetch(authRequest: AuthRequest): any {
 export function* authenticatedFetch(url: string, method = "GET", body: any = undefined): any {
 
     const jwttoken = localStorage.getItem("jwttoken");
-    console.log(jwttoken)
     if (jwttoken == null) {
         console.log("not authenticated");
         history.push("/auth");
