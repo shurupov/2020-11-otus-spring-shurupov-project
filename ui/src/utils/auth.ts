@@ -44,3 +44,8 @@ export function* authenticatedFetch(url: string, method = "GET", body: any = und
 export const authenticated = (): boolean => {
     return localStorage.getItem("jwttoken") != null;
 }
+
+export const logout = (): void => {
+    localStorage.removeItem("jwttoken");
+    history.push("/auth");
+}

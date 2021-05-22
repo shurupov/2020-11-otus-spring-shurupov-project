@@ -2,7 +2,7 @@ import {call, put, takeEvery} from "redux-saga/effects";
 import {sagaActionTypes} from "../../store/sagaActionTypes";
 import {purchasesListSlice} from "./slice";
 import {authenticatedFetch} from "../../utils/auth";
-import {history} from "../../store/store";
+import {processException} from "../../utils/processException";
 
 export const purchasesListAction = () => {
     return {
@@ -15,10 +15,7 @@ export function* workerPurchasesList(): any {
         const purchases = yield call(authenticatedFetch, "/api/purchases");
         yield put(purchasesListSlice.actions.list(purchases._embedded.purchases));
     } catch (e) {
-        console.log(e);
-        if (e.name == "BadResponse" && e.response.status == 401) {
-            history.push("/auth");
-        }
+        processException(e);
     }
 }
 
