@@ -9,6 +9,8 @@ services:
       POSTGRES_DB: jpurchase
     networks:
       - backend
+    ports:
+      - 5432:5432
 
   core:
     build:
@@ -31,32 +33,32 @@ services:
     volumes:
       - "./core/target:/opt/project"
 
-  frontend:
-    build:
-      context: ./ui
-      dockerfile: ./DevDockerfile
-    container_name: jpurchase-ui-dev
-    image: jpurchase-ui:dev
-    depends_on:
-      - core
-    ports:
-      - 4000:4000
-    networks:
-      - frontend
-    volumes:
-      - "./ui:/opt/project"
-
-  nginx-router:
-    container_name: nginx-router
-    image: nginx:1.17.1-alpine
-    depends_on:
-      - frontend
-    ports:
-      - 80:80
-    networks:
-      - frontend
-    volumes:
-      - ./ui/devDefault.conf:/etc/nginx/conf.d/default.conf
+#  frontend:
+#    build:
+#      context: ./ui
+#      dockerfile: ./DevDockerfile
+#    container_name: jpurchase-ui-dev
+#    image: jpurchase-ui:dev
+#    depends_on:
+#      - core
+#    ports:
+#      - 4000:4000
+#    networks:
+#      - frontend
+#    volumes:
+#      - "./ui:/opt/project"
+#
+#  nginx-router:
+#    container_name: nginx-router
+#    image: nginx:1.17.1-alpine
+#    depends_on:
+#      - frontend
+#    ports:
+#      - 80:80
+#    networks:
+#      - frontend
+#    volumes:
+#      - ./ui/devDefault.conf:/etc/nginx/conf.d/default.conf
 
 
 networks:

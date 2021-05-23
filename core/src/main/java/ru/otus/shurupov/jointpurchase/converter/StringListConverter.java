@@ -9,9 +9,9 @@ import javax.persistence.AttributeConverter;
 import java.io.IOException;
 import java.util.List;
 
-public class ListConverter implements AttributeConverter<List<String>, String> {
+public class StringListConverter implements AttributeConverter<List<String>, String> {
 
-    private static final Logger logger = LoggerFactory.getLogger(MapConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(StringListConverter.class);
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 

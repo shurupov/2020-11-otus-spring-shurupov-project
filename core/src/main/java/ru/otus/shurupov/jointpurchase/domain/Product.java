@@ -1,7 +1,7 @@
 package ru.otus.shurupov.jointpurchase.domain;
 
 import lombok.Data;
-import ru.otus.shurupov.jointpurchase.converter.ListConverter;
+import ru.otus.shurupov.jointpurchase.converter.StringListConverter;
 import ru.otus.shurupov.jointpurchase.converter.MapConverter;
 
 import javax.persistence.*;
@@ -38,7 +38,7 @@ public class Product {
     private String optionName;
 
     @Column(name = "options")
-    @Convert(converter = ListConverter.class)
+    @Convert(converter = StringListConverter.class)
     private List<String> options;
 
     @Column(name = "price")
