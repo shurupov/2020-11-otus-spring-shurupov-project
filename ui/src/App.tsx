@@ -1,13 +1,14 @@
 import 'antd/dist/antd.css';
 import React from "react";
 import { Layout } from 'antd';
-import {TopMenu} from "./components/topMenu/TopMenu";
 import {Breadcrumbs} from "./components/breadcrumbs/BreadCrumbs";
 import {Provider} from "react-redux";
 import {store, history} from "./store/store";
 import {ConnectedRouter} from "connected-react-router";
 import {CustomContent} from "./components/customContent/CustomContent";
 import {ConnectedLeftMenu} from "./components/leftMenu/ConnectedLeftMenu";
+import "./utils/app.css";
+import {ConnectedTopMenu} from "./components/topMenu/ConnectedTopMenu";
 
 const { Content, Sider } = Layout;
 
@@ -15,7 +16,7 @@ export const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <Layout>
-                <TopMenu />
+                <ConnectedTopMenu />
                 <Layout>
                     <Sider width={200} className="site-layout-background">
                         <ConnectedLeftMenu />
