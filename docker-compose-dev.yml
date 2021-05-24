@@ -33,6 +33,19 @@ services:
     volumes:
       - "./core/target:/opt/project"
 
+  frontend:
+    container_name: jpurchase-ui
+    image: nginx:1.17.1-alpine
+    depends_on:
+      - core
+    ports:
+      - 80:80
+    networks:
+      - frontend
+    volumes:
+      - "./ui/default.conf:/etc/nginx/conf.d/default.conf"
+      - "./ui/build/:/usr/share/nginx/html/"
+
 #  frontend:
 #    build:
 #      context: ./ui
