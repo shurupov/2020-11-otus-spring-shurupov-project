@@ -20,9 +20,10 @@ services:
     image: jpurchase-core:dev
     depends_on:
       - postgresdb
+      - registry
     ports:
-      - 8080:8080
-      - 5005:5005
+      - 8002:8002
+      - 5002:5002
     networks:
       - backend
       - frontend
@@ -33,11 +34,40 @@ services:
     volumes:
       - "./core/target:/opt/project"
 
+  registry:
+    build:
+      context: ./service-registry
+      dockerfile: ./DevDockerfile
+    container_name: service-registry-dev
+    image: service-registry:dev
+    ports:
+      - 8001:8001
+    networks:
+      - backend
+    volumes:
+      - "./service-registry/target:/opt/project"
+
+  gateway:
+    build:
+      context: ./zuul-gateway
+      dockerfile: ./DevDockerfile
+    container_name: jpurchase-gateway-dev
+    image: jpurchase-gateway:dev
+    depends_on:
+      - core
+      - registry
+    ports:
+      - 8765:8765
+    networks:
+      - backend
+    volumes:
+      - "./zuul-gateway/target:/opt/project"
+
   frontend:
     container_name: jpurchase-ui
     image: nginx:1.17.1-alpine
     depends_on:
-      - core
+      - gateway
     ports:
       - 80:80
     networks:
