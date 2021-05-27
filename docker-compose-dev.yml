@@ -57,7 +57,8 @@ services:
       - core
       - registry
     ports:
-      - 8765:8765
+      - 8003:8003
+      - 5003:5003
     networks:
       - backend
     volumes:
