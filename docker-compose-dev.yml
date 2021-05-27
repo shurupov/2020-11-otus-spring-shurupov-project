@@ -68,7 +68,7 @@ services:
     build:
       context: ./ui
     container_name: jpurchase-ui
-    image: nginx:1.17.1-alpine
+    image: jpurchase-ui
     depends_on:
       - gateway
     ports:

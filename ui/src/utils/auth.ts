@@ -28,12 +28,11 @@ export function* loginFetch(authRequest: AuthRequest): any {
 }
 
 export function* authenticatedFetch(url: string, method = "GET", body: any = undefined): any {
-    const jwttoken = localStorage.getItem("jwttoken");
-    if (jwttoken == null) {
+    if (!authenticated()) {
         console.log("not authenticated");
         history.push("/auth");
     }
-
+    const jwttoken = localStorage.getItem("jwttoken");
     const authHeaders = {
         "Authorization": "Bearer " + jwttoken
     };
@@ -47,5 +46,7 @@ export const authenticated = (): boolean => {
 
 export const logout = (): void => {
     localStorage.removeItem("jwttoken");
-    history.push("/auth");
+    setTimeout(() => {
+        history.push("/auth");
+    }, 500);
 }
