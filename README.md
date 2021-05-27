@@ -14,7 +14,10 @@ Description: Joint Purchase Organization Automation
   <summary>Start application in production mode</summary>
 
 ## Command to init/start
-`docker-compose up`
+`docker-compose up -d`
+
+## Command to stop
+`docker-compose down`
 
 </details>
 
@@ -24,13 +27,13 @@ Description: Joint Purchase Organization Automation
 ## Command to build backend (in `core` folder)
 `mvn clean package`
 
-## Command to init/start database and backend (in root folder)
-`docker-compose --file docker-compose-dev.yml up`
-
 ## Command to prepare frontend (in `ui` folder)
-`npm install`
+`npm install && npm run build`
 
-## Command to start frontend (in `ui` folder)
-`npm start`
+## Command to init/start database and backend (in root folder)
+`docker-compose --file docker-compose-dev.yml up -d`
+
+## Command to stop
+`docker-compose down`
   
 </details>

@@ -37,10 +37,11 @@ services:
     build:
       context: ./service-registry
       dockerfile: ./DevDockerfile
-    container_name: service-registry-dev
+    container_name: service-registry
     image: service-registry:dev
     ports:
       - 8001:8001
+      - 5001:5001
     networks:
       - backend
     volumes:
@@ -53,11 +54,9 @@ services:
     container_name: jpurchase-gateway-dev
     image: jpurchase-gateway:dev
     depends_on:
-      - core
       - registry
     ports:
       - 8003:8003
-      - 5003:5003
     networks:
       - backend
       - frontend
@@ -65,10 +64,8 @@ services:
       - "./zuul-gateway/target:/opt/project"
 
   frontend:
-    build:
-      context: ./ui
     container_name: jpurchase-ui
-    image: jpurchase-ui
+    image: nginx:1.17.1-alpine
     depends_on:
       - gateway
     ports:
@@ -78,34 +75,6 @@ services:
     volumes:
       - "./ui/default.conf:/etc/nginx/conf.d/default.conf"
       - "./ui/build/:/usr/share/nginx/html/"
-
-#  frontend:
-#    build:
-#      context: ./ui
-#      dockerfile: ./DevDockerfile
-#    container_name: jpurchase-ui-dev
-#    image: jpurchase-ui:dev
-#    depends_on:
-#      - core
-#    ports:
-#      - 4000:4000
-#    networks:
-#      - frontend
-#    volumes:
-#      - "./ui:/opt/project"
-#
-#  nginx-router:
-#    container_name: nginx-router
-#    image: nginx:1.17.1-alpine
-#    depends_on:
-#      - frontend
-#    ports:
-#      - 80:80
-#    networks:
-#      - frontend
-#    volumes:
-#      - ./ui/devDefault.conf:/etc/nginx/conf.d/default.conf
-
 
 networks:
   frontend:

@@ -9,7 +9,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://service-registry-dev:8001/eureka
+      defaultZone: http://service-registry:8001/eureka
   instance:
     instance-id: ${spring.application.name}:${server.port}
     lease-renewal-interval-in-seconds: 15

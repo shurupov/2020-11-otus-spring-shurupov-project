@@ -17,15 +17,31 @@ services:
     image: jpurchase-core:v1
     depends_on:
       - postgresdb
-    ports:
-      - 8080:8080
     networks:
       - backend
-      - frontend
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/jpurchase
       SPRING_DATASOURCE_USERNAME: jpurchaseuser1
       SPRING_DATASOURCE_PASSWORD: jpurchasepassword1
+
+  registry:
+    build:
+      context: ./service-registry
+    container_name: service-registry
+    image: service-registry:v1
+    networks:
+      - backend
+
+  gateway:
+    build:
+      context: ./zuul-gateway
+    container_name: jpurchase-gateway
+    image: jpurchase-gateway:v1
+    depends_on:
+      - registry
+    networks:
+      - backend
+      - frontend
 
   frontend:
     build:
@@ -33,12 +49,11 @@ services:
     container_name: jpurchase-ui
     image: jpurchase-ui:v1
     depends_on:
-      - core
+      - gateway
     ports:
       - 80:80
     networks:
       - frontend
-
 
 networks:
   frontend:

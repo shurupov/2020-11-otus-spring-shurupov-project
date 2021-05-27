@@ -1,4 +1,0 @@
-FROM node:10.24.1-alpine3.11
-WORKDIR /opt/project
-EXPOSE 4000
-CMD ["npm", "start"]
