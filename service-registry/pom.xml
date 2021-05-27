@@ -10,10 +10,10 @@
 	</parent>
 
 	<groupId>ru.otus.shurupov.jointpurchase</groupId>
-	<artifactId>jpurchase-core</artifactId>
+	<artifactId>service-registry</artifactId>
 	<version>1.0</version>
-	<name>core</name>
-	<description>Joint Purchase Core</description>
+	<name>eureka-service-registry</name>
+	<description>Joint Purchase Eureka Service Registry</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -24,15 +24,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,17 +32,39 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 			<exclusions>
 				<exclusion>
-					<groupId>commons-configuration</groupId>
-					<artifactId>commons-configuration</artifactId>
+					<groupId>com.fasterxml.woodstox</groupId>
+					<artifactId>woodstox-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jersey</groupId>
+					<artifactId>jersey-client</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jersey</groupId>
+					<artifactId>jersey-core</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>org.hdrhistogram</groupId>
 					<artifactId>HdrHistogram</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>commons-configuration</groupId>
+					<artifactId>commons-configuration</artifactId>
+				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.woodstox</groupId>
+			<artifactId>woodstox-core</artifactId>
+			<version>6.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.19.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-configuration</groupId>
@@ -60,51 +73,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>${postgresql.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-			<version>${liquibase.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-rest-hal-explorer</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -168,7 +139,6 @@
 						</goals>
 						<configuration>
 							<rules>
-
 								<dependencyConvergence/>
 								<requireMavenVersion>
 									<version>${minimal.maven.version}</version>

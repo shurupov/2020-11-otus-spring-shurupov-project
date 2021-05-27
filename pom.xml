@@ -12,5 +12,7 @@
 
     <modules>
         <module>core</module>
+        <module>service-registry</module>
+        <module>zuul-gateway</module>
     </modules>
 </project>

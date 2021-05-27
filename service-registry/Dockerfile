@@ -10,6 +10,6 @@ FROM openjdk:11-jre-slim
 ENV PROJECT_DIR=/opt/project
 RUN mkdir -p $PROJECT_DIR
 WORKDIR $PROJECT_DIR
-COPY --from=0 $PROJECT_DIR/target/jpurchase-core-1.0.jar $PROJECT_DIR/
-EXPOSE 8002
-CMD ["java", "-jar", "/opt/project/jpurchase-core-1.0.jar"]
+COPY --from=0 $PROJECT_DIR/target/service-registry-1.0.jar $PROJECT_DIR/
+EXPOSE 8001
+CMD ["java", "-jar", "/opt/project/service-registry-1.0.jar"]
