@@ -26,7 +26,6 @@ services:
       - 5002:5002
     networks:
       - backend
-      - frontend
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/jpurchase
       SPRING_DATASOURCE_USERNAME: jpurchaseuser1
@@ -61,10 +60,13 @@ services:
       - 5003:5003
     networks:
       - backend
+      - frontend
     volumes:
       - "./zuul-gateway/target:/opt/project"
 
   frontend:
+    build:
+      context: ./ui
     container_name: jpurchase-ui
     image: nginx:1.17.1-alpine
     depends_on:
