@@ -8,6 +8,7 @@ import {watchLocationChange} from "../components/routing/saga";
 import {watchPurchasesList} from "../components/purchasesList/saga";
 import {watchLogin} from "../components/authentication/saga";
 import {watchPurchaseDisplay} from "../components/purchase/saga";
+import {watchProductsList} from "../components/productList/saga";
 
 export const history = createBrowserHistory();
 
@@ -33,6 +34,7 @@ export default function configureStore(preloadedState: PreloadedState<any>) {
 export const store: Store = configureStore({});
 
 sagaMiddleware.run(watchLocationChange);
+sagaMiddleware.run(watchProductsList);
 sagaMiddleware.run(watchPurchasesList);
 sagaMiddleware.run(watchPurchaseDisplay);
 sagaMiddleware.run(watchLogin);
