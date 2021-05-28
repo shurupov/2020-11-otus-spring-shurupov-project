@@ -3,7 +3,10 @@ import React from "react";
 import {Link, Route} from "react-router-dom";
 
 export interface BreadCrumbsProps {
-    purchaseName?:string;
+    purchaseName?: string;
+    purchaseId?: string | number;
+    productName?: string;
+    productId?: string | number;
 }
 
 export const Breadcrumbs = (props: BreadCrumbsProps) => (
@@ -16,7 +19,10 @@ export const Breadcrumbs = (props: BreadCrumbsProps) => (
             <Breadcrumb.Item><Link to={"/purchases"}>Purchases</Link></Breadcrumb.Item>
         </Route>
         <Route path="/purchases/:id">
-            <Breadcrumb.Item><Link to={"/purchases"}>{props.purchaseName}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item><Link to={`/purchases/${props.purchaseId}`}>{props.purchaseName}</Link></Breadcrumb.Item>
+        </Route>
+        <Route path="/purchases/:purchaseId/products/:productId">
+            <Breadcrumb.Item><Link to={`/purchases/${props.purchaseId}/products/${props.productId}`}>{props.productName}</Link></Breadcrumb.Item>
         </Route>
 
         <Route path="/auth">

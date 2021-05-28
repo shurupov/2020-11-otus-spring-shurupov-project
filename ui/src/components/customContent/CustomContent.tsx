@@ -3,6 +3,7 @@ import {Redirect, Route, Switch } from "react-router-dom";
 import {ConnectedPurchasesList} from "../purchasesList/ConnectedPurchasesList";
 import {ConnectedAuthentication} from "../authentication/ConnectedAuthentication";
 import {ConnectedPurchase} from "../purchase/ConnectedPurchase";
+import {ConnectedProduct} from "../product/ConectedProduct";
 
 export const CustomContent = () => (
     <Switch>
@@ -13,7 +14,10 @@ export const CustomContent = () => (
             <ConnectedPurchasesList />
         </Route>
         <Route path="/purchases/:id" exact>
-            <ConnectedPurchase id={0} description={""} name={""} createdAt={""} />
+            <ConnectedPurchase />
+        </Route>
+        <Route path="/purchases/:purchaseId/products/:productId" exact>
+            <ConnectedProduct />
         </Route>
         <Route path="/auth" exact>
             <ConnectedAuthentication />

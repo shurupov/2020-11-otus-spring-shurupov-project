@@ -1,13 +1,7 @@
 import {Card, Col, Row} from "antd";
 import {Link} from "react-router-dom";
 import React from "react";
-
-export interface ProductProps {
-    id: number;
-    name: string;
-    description: string;
-    createdAt: string;
-}
+import {ProductProps} from "../product/Product";
 
 export interface ProductsProps {
     purchaseId: number | string;
