@@ -14,8 +14,8 @@ export const purchaseDisplayAction = (id: number | string) => {
 
 export function* workerPurchaseDisplay(action:AnyAction): any {
     try {
-        const purhcase = yield call(authenticatedFetch, `/api/purchases/${action.payload}`);
-        yield put(purchaseSlice.actions.display(purhcase));
+        const purchase = yield call(authenticatedFetch, `/api/purchases/${action.payload}`);
+        yield put(purchaseSlice.actions.display(purchase));
     } catch (e) {
         processException(e);
     }
