@@ -7,7 +7,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import ru.otus.shurupov.jointpurchase.config.JwtTokenUtil;
+import ru.otus.shurupov.jointpurchase.config.security.JwtTokenUtil;
 import ru.otus.shurupov.jointpurchase.domain.jwt.JwtRequest;
 import ru.otus.shurupov.jointpurchase.domain.jwt.JwtResponse;
 import ru.otus.shurupov.jointpurchase.service.JwtUserDetailsService;

@@ -1,4 +1,4 @@
-package ru.otus.shurupov.jointpurchase.config;
+package ru.otus.shurupov.jointpurchase.config.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

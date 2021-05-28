@@ -28,6 +28,7 @@ export const App = () => (
                             style={{
                                 margin: 0,
                                 minHeight: 280,
+                                padding: 24
                             }}
                         >
                             <CustomContent />
