@@ -24,7 +24,7 @@ Description: Joint Purchase Organization Automation
 <details>
   <summary>Start application in development mode</summary>
 
-## Command to build backend (in `core` folder)
+## Command to build backend (in root folder)
 `mvn clean package`
 
 ## Command to prepare frontend (in `ui` folder)
