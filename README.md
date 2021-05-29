@@ -10,6 +10,8 @@ Project: Joint Purchase Service
 
 Description: Joint Purchase Organization Automation
 
+[Presentation (in russian)](https://docs.google.com/presentation/d/1C9oSKHsEsWiBH7c4Vl7yk4_P6muZYkbibHyJ4GXSw5o)
+
 <details>
   <summary>Start application in production mode</summary>
 
