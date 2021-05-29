@@ -6,7 +6,7 @@ Student: Evgeny Shurupov
 
 Homeworks of the same course: [2020-11-otus-spring-shurupov](https://github.com/shurupov/2020-11-otus-spring-shurupov)
 
-Certificate: [english](https://otus.ru/certificate/d6030b55f7274d0d9b6be132332e9bb6/en/), [english pdf](https://otus.ru/async/docs.certificate?uid=d6030b55f7274d0d9b6be132332e9bb6&lang=en-us) [russian](https://otus.ru/certificate/d6030b55f7274d0d9b6be132332e9bb6/), [russian pdf](https://otus.ru/async/docs.certificate?uid=d6030b55f7274d0d9b6be132332e9bb6&lang=ru-ru)
+Certificate: [english](https://otus.ru/certificate/d6030b55f7274d0d9b6be132332e9bb6/en/), [english pdf](https://otus.ru/async/docs.certificate?uid=d6030b55f7274d0d9b6be132332e9bb6&lang=en-us), [russian](https://otus.ru/certificate/d6030b55f7274d0d9b6be132332e9bb6/), [russian pdf](https://otus.ru/async/docs.certificate?uid=d6030b55f7274d0d9b6be132332e9bb6&lang=ru-ru)
 
 Project: Joint Purchase Service
 
