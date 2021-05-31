@@ -1,3 +1,5 @@
+This is moved [there](https://github.com/shurupov/2020-11-otus-spring-shurupov/tree/master/project-jpurchase)
+
 # Spring Framework Developer Course Final Project
 
 Course: [Otus Spring Framework Developer Course](https://otus.ru/lessons/javaspring/)
